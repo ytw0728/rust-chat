@@ -1,3 +1,17 @@
+use clap::Parser;
+use runner::arguments::{Args, Mode};
+mod client;
+mod server;
+mod runner;
+
 fn main() {
-    println!("Hello, world!");
+    let args = Args::parse();
+    match args.mode {
+        Mode::Server => {
+            server::run();
+        }
+        Mode::Client => {
+            client::run();
+        }
+    }
 }
